@@ -1,11 +1,10 @@
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs";
 
-  outputs = { nixpkgs, ... }: {
+  outputs = { nixpkgs, buildPackages, fetchFromGitHub, perl, buildLinux, rpiVersion, ... } @ args: {
     legacyPackages.aarch64-linux = with nixpkgs.legacyPackages.aarch64-linux; rec {
 
-      linux_rpi5 = { buildPackages, fetchFromGitHub, perl, buildLinux, rpiVersion, ... } @ args:
-        buildLinux {
+      linux_rpi5 = buildLinux {
           version = "6.1.63-stable_20231123";
           modDirVersion = "6.1.63";
 
