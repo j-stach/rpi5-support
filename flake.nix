@@ -4,8 +4,8 @@
   outputs = { nixpkgs, ... }: {
     legacyPackages.aarch64-linux = with nixpkgs.legacyPackages.aarch64-linux; rec {
 
-      linux_rpi5 = { buildPackages, fetchFromGitHub, perl, buildLinux, rpiVersion, ... } @ args:
-        buildLinux (args // {
+      linux_rpi5 = { lib, buildPackages, fetchFromGitHub, perl, buildLinux, rpiVersion, ... } @ args:
+        lib.overrideDerivation( buildLinux( args // {
           version = "6.1.63-stable_20231123";
           modDirVersion = "6.1.63";
 
@@ -26,7 +26,7 @@
             platforms = with lib.platforms; arm ++ aarch64;
             hydraPlatforms = [ "aarch64-linux" ];
           };
-
+      } // (args.argsOverride or {}))) (oldAttrs: {
           # Clear the local version in the kernel config to avoid conflict
           postConfigure = ''
             sed -i $buildRoot/.config -e 's/^CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=""/'
