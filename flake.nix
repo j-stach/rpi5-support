@@ -55,13 +55,13 @@
         });
 
       # Package the kernel so it can be used in Nix configurations
-      linuxPackages_rpi5 = linuxPackagesFor callPackage linux_rpi5 {
+      linuxPackages_rpi5 = linuxPackagesFor (callPackage linux_rpi5 {
         # Pi-specific hardware support
         kernelPatches = with kernelPackages; [
           bridge_stp_helper
           request_key_helper
         ];
-      };
+      });
 
     };
   };
