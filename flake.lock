@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1730226221,
-        "narHash": "sha256-e5aiyUyPGntTDur2J035Z3AjwZ0/gX8c/YiRccl+4Zs=",
+        "lastModified": 1730228728,
+        "narHash": "sha256-igPp1MKnYVk1F+Z+SZlB5G+ia+vG7oAtDqI/KIEjUUA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4dece45afd70bc24afe518ec5ce89c776ee57ba5",
+        "rev": "5319f16a2366d96d2a2058c7b7df5f1e27456032",
         "type": "github"
       },
       "original": {
