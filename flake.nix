@@ -36,7 +36,7 @@
 
           # Pi-specific hardware support
           kernelPatches = with kernelPackages; [
-            bridge_stp_helper,
+            bridge_stp_helper
             request_key_helper
           ];
         };
