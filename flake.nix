@@ -33,12 +33,6 @@
             platforms = with lib.platforms; arm ++ aarch64;
             hydraPlatforms = [ "aarch64-linux" ];
           };
-
-          # Pi-specific hardware support
-          kernelPatches = with kernelPackages; [
-            bridge_stp_helper
-            request_key_helper
-          ];
         };
 
         # Override kernel defaults to ensure Raspberry Pi 5 compatibility
@@ -61,7 +55,14 @@
         });
 
       # Package the kernel so it can be used in Nix configurations
-      linuxPackages_rpi5 = linuxPackagesFor linux_rpi5;
+      linuxPackages_rpi5 = linuxPackagesFor callPackage linux_rpi5 {
+        # Pi-specific hardware support
+        kernelPatches = with kernelPackages; [
+          bridge_stp_helper
+          request_key_helper
+        ];
+      };
+
     };
   };
 }
